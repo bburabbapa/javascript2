@@ -12,10 +12,10 @@
 			    var read_data = function(){
 					$.ajax({
 						url:"datafile/board.json",
-						type:"get",
+						type:"get",//데이터타입요청
 						data:"",
-						dataType:"json",
-						success:function(data){
+						dataType:"json",//데이터유형
+						success:function(data){//콜백함수
 							console.log(data);
 							var hdata = "";
 							for(var i=0;i<data.length;i++){
