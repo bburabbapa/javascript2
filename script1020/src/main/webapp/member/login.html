@@ -24,63 +24,16 @@
 <![endif]-->
 <script type="text/javascript">
 $(document).ready(function() {
-	$(".sbtn").click(function(){
-		if($("#loginTxt").val()==""){
-			alert("아이디를 입력하셔야 합니다.");
-			$("#loginTxt").focus(); //input창으로 이동
-			return false;
-		}
-		if($("#passTxt").val().length==0){
-			alert("비밀번호를 입력하셔야 합니다.");
-			$("#passTxt").focus(); //input창으로 이동
-			return false;
-		}
-		
-		//ajax
-		$.ajax({
-			url:"../datafile/member.json",
-			type:"post",
-			data:{"uid":$("#loginTxt").val(),"upw":$("#passTxt").val()},
-			dataType:"json",
-			success:function(data){
-				console.log(data); //100개
-				var check=0;
-				for(var i=0;i<data.length;i++){
-				    console.log(data[i].id);
-				    console.log(data[i].pw);
-					if($("#loginTxt").val()==data[i].id && $("#passTxt").val()==data[i].pw){
-						alert("로그인 되었습니다. 메인페이지로 이동합니다.");
-						location.href = "../layout/main.html";
-						return false;
-					}//if
-				}//for
-				if(check==0){
-					alert("아이디 또는 패스워드가 일치하지 않습니다. 다시 입력하세요.");
-					$("#loginTxt").focus(); //input창으로 이동
-				}
-			},
-			error:function(){
-				alert("실패");
-			}
-		});//ajax
-		
-		/*
-		//aaa,1111인 경우는 로그인되었습니다. aaa,1111아니면 아이디 또는 패스워드가 일치하지 않습니다.
-		if($("#loginTxt").val()=="aaa" && $("#passTxt").val()=="1111"){
-			alert("로그인 되었습니다.");
-			location.href = "../layout/main.html";
-		}else{
-			alert("아이디 또는 패스워드가 일치하지 않습니다.");
-			$("#loginTxt").focus(); //input창으로 이동
-			return false;
-		}
-		*/
-		
-	});//.sbtn
-});//jquery
+	
+
+
+});
 </script>
 </head>
 <body>
+
+
+
 <!--익스레이어팝업-->
 <div id="ieUser" style="display:none">
 	<div class="iewrap">	
@@ -99,33 +52,40 @@ $(document).ready(function() {
 <!--//익스레이어팝업-->
 <!--IE 6,7,8 사용자에게 브라우저 업데이터 설명 Div 관련 스크립트-->
  <script type="text/javascript">
+
      var settimediv = 200000; //지속시간(1000= 1초)
      var msietimer;
+
      $(document).ready(function () {
          msiecheck();
      });
+
      var msiecheck = function () {
          var browser = navigator.userAgent.toLowerCase();
          if (browser.indexOf('msie 6') != -1 ||
                 browser.indexOf('msie 7') != -1 ||
 				 browser.indexOf('msie 8') != -1) {
-             msieshow();			
+             msieshow();			 
          }
          else {
              msiehide();
          }
      }
+
      var msieshow = function () {
         $("#ieUser").show();
         msietimer = setTimeout("msiehide()", settimediv);
      }
+
      var msiehide = function () {
 		$("#ieUser").hide();
         clearTimeout(msietimer);
      }
 </script>
+
 <div id="allwrap">
 <div id="wrap">
+
 	<div id="header">
 		
 		<div id="snbBox">
@@ -146,6 +106,7 @@ $(document).ready(function() {
 					<li><a href="#">MY PAGE</a></li>
 					<li><a href="#">CART</a></li>
 				</ul>
+
 				<div id="search">
 					<input type="text" class="searchType" />
 					<input type="image" src="../images/btn/btn_main_search.gif" width="23" height="20" alt="검색하기" />
@@ -153,6 +114,8 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</div>
+
+
 	<!-- GNB -->
 	<div id="gnb">
 		
@@ -214,11 +177,14 @@ $(document).ready(function() {
 				<li class="t2"><a href="#" id="topNavi8">대량구매</a></li>
 			</ul>
 		</div>
+
 		<script type="text/javascript">initTopMenu();</script>
 	</div>
 	<!-- //GNB -->
+
 	<!-- container -->
 	<div id="container">
+
 		<div id="location">
 			<ol>
 				<li><a href="#">HOME</a></li>
@@ -239,6 +205,8 @@ $(document).ready(function() {
 					<li class="last"><a href="#" id="leftNavi6">이메일무단<span>수집거부</span></a></li>
 				</ul>			
 			</div><script type="text/javascript">initSubmenu(1,0);</script>
+
+
 			<!-- contents -->
 			<div id="contents">
 				<div id="member">
@@ -247,17 +215,22 @@ $(document).ready(function() {
 					<div class="informbox">
 						<div class="inform">
 							<ul>
-								<li><input type="text" class="loginType" id="loginTxt" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='loginType'}else {this.className='mfocusnot'}" style="ime-mode:inactive;" /></li>
-								<li><input type="password" class="passType" id="passTxt" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='passType'}else {this.className='mfocusnot'}" style="ime-mode:inactive;" /></li>
+								<li><input type="text" class="loginType" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='loginType'}else {this.className='mfocusnot'}" style="ime-mode:inactive;" /></li>
+								<li><input type="password" class="passType" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='passType'}else {this.className='mfocusnot'}" style="ime-mode:inactive;" /></li>
 							</ul>
+
 							<div class="btn"><a href="#" class="sbtn">로그인</a></div>
 							<div class="chk"><input type="checkbox" id="idsave"/><label for="idsave">아이디 저장</label></div>							
+
 							<div class="point">
 								<p>아이디와 비밀번호를 잊으셨나요?</p>
 								<a href="#" class="nbtn">아이디/비밀번호 찾기</a>
 							</div>
 						</div>
 					</div>
+
+
+
 					<h3>비회원 주문 조회</h3>
 					<div class="informbox">
 						<div class="inform">
@@ -265,6 +238,7 @@ $(document).ready(function() {
 								<li><input type="text" class="ordererType" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='ordererType'}else {this.className='mfocusnot'}" /></li>
 								<li><input type="text" class="ordernumType" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='ordernumType'}else {this.className='mfocusnot'}" /></li>
 							</ul>
+
 							<div class="btn"><a href="#" class="gbtn">조회하기</a></div>
 							<div class="point">
 								<p>아직 JARDIN 회원이 아니신가요? <span>회원가입하시고 다양한 혜택을 받으세요.</span></p>
@@ -272,12 +246,19 @@ $(document).ready(function() {
 							</div>
 						</div>
 					</div>
+
 				</div>
 			</div>
 			<!-- //contents -->
+
+
 		</div>
 	</div>
 	<!-- //container -->
+
+
+
+
 	<div id="footerWrap">
 		<div id="footer">
 			<div id="fnb">
@@ -303,10 +284,14 @@ $(document).ready(function() {
 						<li class="copy">COPYRIGHT © 2014 JARDIN <span>ALL RIGHTS RESERVED.</span></li>
 					</ul>
 				</address>
+
 				<div id="inicis"><img src="../images/ico/ico_inicis.png" alt="이니시스 결제시스템" /></div>
 			</div>
 		</div>
 	</div>
+
+
+
 </div>
 </div>
 </body>
